@@ -1,0 +1,59 @@
+//AZKHA RIZKY I.A
+//202310370311245
+
+
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class LibrarySystem {
+    private static HashMap<String, String> studentMap = new HashMap<>();
+    private static HashMap<String, String> adminMap = new HashMap<>();
+
+    public static void main(String[] args) {
+        studentMap.put("202310370311245", "student1");
+        studentMap.put("202310370311246", "student2");
+
+        adminMap.put("admin", "admin1");
+        adminMap.put("adminn", "admin2");
+
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("Library System");
+            System.out.println("1. Masuk Sebagai Mahasiswa");
+            System.out.println("2. Masuk Sebagai Admin");
+            System.out.println("3. Keluar");
+            System.out.println("Pilih Pengaturan (1-3): ");
+            int choice = scanner.nextInt();
+
+            if (choice == 1) {
+                System.out.println("Inputkan NIM: ");
+                String nim = scanner.next();
+                if (studentMap.containsKey(nim)) {
+                    System.out.println("Berhasil Masuk Sebagai Mahasiswa");
+                } else {
+                    System.out.println("404 User Not Found");
+                }
+            } else if (choice == 2) {
+                System.out.println("Masukkan Nama Pengguna: ");
+                String adminUsername = scanner.next();
+
+                System.out.println("Masukkan Sandi: ");
+                String adminPassword = scanner.next();
+
+                if (adminMap.containsKey(adminUsername) && adminMap.get(adminUsername).equals(adminPassword)) {
+                    System.out.println("Berhasil Masuk Sebagai Admin");
+                } else {
+                    System.out.println("404 User Not Found!!");
+                }
+            } else if (choice == 3) {
+                System.out.println("Berhasil keluar");
+                break;
+            } else {
+                System.out.println("Pilihan Salah, Coba Lagi.");
+            }
+            System.out.println();
+        }
+        scanner.close();
+    }
+}
